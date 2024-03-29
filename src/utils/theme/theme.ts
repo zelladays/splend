@@ -14,6 +14,7 @@ const colors = {
   greenDark: "#35c29e",
   greenLight: "#95f2af",
   error: "#FE392C",
+  grayLight: "#94949F",
 };
 
 const themeValues = {
