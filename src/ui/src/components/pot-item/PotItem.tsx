@@ -1,7 +1,6 @@
 import { Flex, Text } from "@chakra-ui/react";
 import * as React from "react";
 import { useTheme } from "../../../..";
-import { hexToRGB } from "../../../../utils";
 
 type Amount = {
   currency: string;

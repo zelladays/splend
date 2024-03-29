@@ -19,6 +19,8 @@ export const HomeActionButtons = () => {
         boxShadow="0px 0px 1px #FFFFFF"
         gap="4"
         onClick={() => setOpenDrawer("createPot")}
+        transition="all 0.3s ease"
+        _hover={{ transform: "translate(0, -4px)" }}
       >
         <SvgIcon icon="pot" color="white" />
         <Text color="white" {...textStyles.h3}>
@@ -34,6 +36,8 @@ export const HomeActionButtons = () => {
         background={`linear-gradient(to right, ${gradients.orange.start}, ${gradients.orange.end})`}
         boxShadow="0px 0px 1px #FFFFFF"
         gap="4"
+        transition="all 0.3s ease"
+        _hover={{ transform: "translate(0, -4px)" }}
       >
         <SvgIcon icon="pot" color="white" />
         <Text color="white" {...textStyles.h3}>

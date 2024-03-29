@@ -31,8 +31,9 @@ export const NavBarItem = React.memo(
               ? colors.brandTertiary
               : undefined
           }
+          _hover={{ transform: "translate(0, -2px)" }}
           borderRadius={8}
-          transition="background-color 0.3s ease"
+          transition="all 0.3s ease"
         >
           <Icon />
           <Text color={colors.white} {...textStyles.body2_700}>

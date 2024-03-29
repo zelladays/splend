@@ -15,6 +15,10 @@ const colors = {
   greenLight: "#95f2af",
   error: "#FE392C",
   grayLight: "#94949F",
+  grayLight1: "#E9E9E9",
+  grayLight2: "#D3D3D3",
+  buttonPrimary: "#48A5E9",
+  buttonPrimary_hover: "#5EB8FA",
 };
 
 export const gradients = {

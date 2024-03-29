@@ -1,5 +1,5 @@
 import * as React from "react";
-import { PotItem, SplendCard } from "../../../../../ui";
+import { SplendCard } from "../../../../../ui";
 
 export const HomePotSummary: React.FC = () => {
   return (
