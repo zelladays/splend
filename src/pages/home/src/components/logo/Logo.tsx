@@ -1,4 +1,4 @@
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex, Heading } from "@chakra-ui/react";
 import * as React from "react";
 import { useTheme } from "../../../../..";
 
@@ -7,16 +7,15 @@ export const Logo: React.FC = () => {
 
   return (
     <Flex
-      px="3"
-      py="1"
-      borderWidth={3}
-      borderColor={colors.brand}
+      p="3"
+      borderWidth={2}
+      borderColor={colors.white}
       borderRadius={8}
       pointerEvents="none"
     >
-      <Text {...textStyles.body2_700} color={colors.brand}>
+      <Heading {...textStyles.body2_700} color={colors.white}>
         Splend
-      </Text>
+      </Heading>
     </Flex>
   );
 };

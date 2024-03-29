@@ -2,10 +2,16 @@ import { extendTheme } from "@chakra-ui/react";
 import { textStyles } from "./textStyles";
 
 const colors = {
-  brand: "#47FFC8",
-  brandSecondary: "#06161D",
-  darkBrand: "#051014",
+  brand: "#57558d",
+  brandSecondary: "#353453",
+  darkBrand: "#282743",
   white: "#FFFFFF",
+  purpleDark: "#a980ef",
+  purpleLight: "#c9a6fa",
+  pinkDark: "#f06f93",
+  pinkLight: "#fd9eb1",
+  greenDark: "#35c29e",
+  greenLight: "#95f2af",
   error: "#FE392C",
 };
 
@@ -18,8 +24,8 @@ const theme = extendTheme({
   colors,
   textStyles,
   fonts: {
-    heading: "Open Sans",
-    body: "Lekton",
+    heading: "Merienda",
+    body: "Open Sans",
   },
 });
 

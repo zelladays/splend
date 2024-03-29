@@ -1,6 +1,7 @@
 import { Flex, Text } from "@chakra-ui/react";
 import * as React from "react";
 import { useTheme } from "../../../..";
+import { hexToRGB } from "../../../../utils";
 
 type Amount = {
   currency: string;
@@ -27,20 +28,25 @@ export const PotItem = React.memo(({ potName, potAmount }: PotItemProps) => {
 
   return (
     <button>
-      <Flex alignItems="center" flexDirection="column">
-        <Flex bgColor={colors.brand} p="2" borderRadius="4px 4px 0 0">
-          <Text {...textStyles.body2_700} color={colors.brandSecondary}>
+      <Flex
+        alignItems="center"
+        flexDirection="column"
+        borderWidth={1}
+        borderColor={colors.white}
+        borderRadius="4px"
+      >
+        <Flex background={colors.greenDark} px="6" py="2">
+          <Text {...textStyles.body2_700} color={colors.white}>
             {potName}
           </Text>
         </Flex>
         <Flex
-          borderWidth={4}
-          borderColor={colors.brand}
-          borderRadius="0 0 4px 4px"
           width="100%"
           py="4"
           px="8"
           position="relative"
+          borderTopWidth={1}
+          borderColor={colors.white}
         >
           <Flex
             position="absolute"
@@ -48,7 +54,7 @@ export const PotItem = React.memo(({ potName, potAmount }: PotItemProps) => {
             left={0}
             top={0}
             width={`${potProgressPercentage}%`}
-            bgColor={colors.brand}
+            background={colors.white}
             zIndex={-1}
           />
         </Flex>

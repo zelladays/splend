@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useTheme } from "../../../../..";
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex, Heading } from "@chakra-ui/react";
 
 export const SplashLogo: React.FC = () => {
   const { textStyles, colors } = useTheme();
@@ -9,13 +9,13 @@ export const SplashLogo: React.FC = () => {
     <Flex
       px="8"
       borderWidth={3}
-      borderColor={colors.brand}
+      borderColor={colors.white}
       borderRadius={8}
       pointerEvents="none"
     >
-      <Text {...textStyles.h1} color={colors.brand}>
+      <Heading {...textStyles.h1} color={colors.white}>
         Splend
-      </Text>
+      </Heading>
     </Flex>
   );
 };

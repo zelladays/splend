@@ -2,6 +2,7 @@ import { Flex, Text } from "@chakra-ui/react";
 import * as React from "react";
 import { Icons } from "../../../../assets";
 import { useTheme } from "../../../..";
+import { hexToRGB } from "../../../../utils";
 
 type ActionItemProps = {
   asset: keyof typeof Icons;
@@ -20,11 +21,11 @@ export const ActionItem = React.memo(
         as="button"
         onClick={onClick}
         borderRadius={4}
-        borderColor={colors.brand}
-        borderWidth={3}
+        borderColor={hexToRGB(colors.white, 0.2)}
+        borderWidth={1}
         alignItems="center"
         justifyContent="center"
-        bgColor={isHovering ? colors.brand : "transparent"}
+        bgColor={isHovering ? colors.brandSecondary : "transparent"}
         p="2"
         gap="4"
         maxHeight="12"
@@ -34,12 +35,12 @@ export const ActionItem = React.memo(
         onMouseLeave={() => setIsHovering(false)}
         transition="width 0.3s ease-in-out, background-color 0.1s ease-in-out"
       >
-        <AssetIcon color={isHovering ? "brandSecondary" : "brand"} />
+        <AssetIcon color="white" />
 
         {isHovering ? (
           <Text
             {...textStyles.body2_700}
-            color={isHovering ? colors.brandSecondary : colors.brand}
+            color="white"
             transition="color 0.1s ease-in-out"
             noOfLines={1}
           >
