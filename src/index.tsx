@@ -13,6 +13,7 @@ import {
   themeValues,
   AuthenticationContextProvider,
   useAuthenticationContext,
+  DrawerContextProvider,
 } from "./utils";
 import { BrowserRouter as Router } from "react-router-dom";
 import { NavigationRouter } from "./routes";
@@ -40,7 +41,9 @@ const Splend = () => {
 export const App = () => {
   return (
     <AuthenticationContextProvider>
-      <Splend />
+      <DrawerContextProvider>
+        <Splend />
+      </DrawerContextProvider>
     </AuthenticationContextProvider>
   );
 };

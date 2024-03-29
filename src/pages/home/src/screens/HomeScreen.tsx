@@ -1,14 +1,14 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
 import * as React from "react";
 
-import { HomeNavBar, HomeActionButtons } from "../components";
+import { HomeNavBar, HomeActionButtons, CreatePotDrawer } from "../components";
 import { SearchBar } from "../../../../ui";
 import { useTheme } from "../../../..";
 
 export const HomeScreen: React.FC = () => {
   const { textStyles } = useTheme();
   return (
-    <Flex flex={1} mt="8" ml="8" gap="8">
+    <Flex flex={1} mt="8" ml="8" gap="8" position="relative">
       <Box position="sticky" top={0} left={0}>
         <HomeNavBar selectedTab="dashboard" />
       </Box>
@@ -24,6 +24,8 @@ export const HomeScreen: React.FC = () => {
           <HomeActionButtons />
         </Flex>
       </Flex>
+
+      <CreatePotDrawer />
     </Flex>
   );
 };

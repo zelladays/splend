@@ -1,9 +1,11 @@
 import { Flex, Text } from "@chakra-ui/react";
 import { useTheme } from "../../../../..";
 import { SvgIcon } from "../../../../../assets";
-import { gradients } from "../../../../../utils";
+import { gradients, useDrawerContext } from "../../../../../utils";
+import * as React from "react";
 
 export const HomeActionButtons = () => {
+  const { setOpenDrawer } = useDrawerContext();
   const { textStyles } = useTheme();
 
   return (
@@ -16,6 +18,7 @@ export const HomeActionButtons = () => {
         background={`linear-gradient(to right, ${gradients.green.start}, ${gradients.green.end})`}
         boxShadow="0px 0px 1px #FFFFFF"
         gap="4"
+        onClick={() => setOpenDrawer("createPot")}
       >
         <SvgIcon icon="pot" color="white" />
         <Text color="white" {...textStyles.h3}>
