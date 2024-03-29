@@ -17,6 +17,17 @@ const colors = {
   grayLight: "#94949F",
 };
 
+export const gradients = {
+  green: {
+    start: "#47C353",
+    end: "#6AE7A3",
+  },
+  orange: {
+    start: "#BD722D",
+    end: "#D49142",
+  },
+};
+
 const themeValues = {
   colors,
   textStyles,
