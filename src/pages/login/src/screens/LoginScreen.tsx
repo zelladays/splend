@@ -1,4 +1,4 @@
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex, Heading } from "@chakra-ui/react";
 import * as React from "react";
 import { GoogleLoginButton, SplashLogo } from "../components";
 import { useTheme } from "../../../..";
@@ -19,14 +19,14 @@ export const LoginScreen: React.FC = () => {
           px="8"
           py="16"
           borderRadius={32}
-          bgColor="rgba(0, 0, 0, 0.2)"
+          bgColor="rgba(0, 0, 0, 0.1)"
           alignItems="center"
           flexDirection="column"
         >
           <SplashLogo />
-          <Text {...textStyles.h2} color={colors.white}>
+          <Heading {...textStyles.body3_400} color={colors.white}>
             Get insights into your saving goals.
-          </Text>
+          </Heading>
           <GoogleLoginButton />
         </Flex>
       </Flex>

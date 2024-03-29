@@ -1,7 +1,12 @@
 import { Box, Flex } from "@chakra-ui/react";
 import * as React from "react";
 
-import { HomeActions, HomeDescription, Logo } from "../components";
+import {
+  HomeActions,
+  HomeDescription,
+  HomePotSummary,
+  Logo,
+} from "../components";
 
 export const HomeScreen: React.FC = () => {
   return (
@@ -22,6 +27,7 @@ export const HomeScreen: React.FC = () => {
         flexDirection="column"
       >
         <HomeDescription />
+        <HomePotSummary />
       </Flex>
     </Flex>
   );

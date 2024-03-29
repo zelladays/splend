@@ -1,4 +1,4 @@
-import { ColorModeScript, Text } from "@chakra-ui/react";
+import { ColorModeScript } from "@chakra-ui/react";
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import reportWebVitals from "./utils/reportWebVitals";
@@ -8,36 +8,40 @@ import {
   ChakraProvider,
   useTheme as useChakraTheme,
 } from "@chakra-ui/react";
-import { theme, themeValues, useAuth } from "./utils";
+import {
+  theme,
+  themeValues,
+  AuthenticationContextProvider,
+  useAuthenticationContext,
+} from "./utils";
 import { BrowserRouter as Router } from "react-router-dom";
 import { NavigationRouter } from "./routes";
-import { GoogleOAuthProvider } from "@react-oauth/google";
 
 export const useTheme = (): typeof themeValues => {
   return useChakraTheme();
 };
 
-export const App = () => {
-  const { loggedIn } = useAuth();
-
-  const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
-
-  if (!GOOGLE_CLIENT_ID) {
-    return <Text color="white">Missing ENV</Text>;
-  }
+const Splend = () => {
+  const { isLoggedIn } = useAuthenticationContext();
 
   return (
-    <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
-      <React.Suspense fallback={<div>Loading...</div>}>
-        <ChakraProvider theme={theme}>
-          <Router>
-            <Box width="100vw">
-              <NavigationRouter loggedIn={loggedIn} />
-            </Box>
-          </Router>
-        </ChakraProvider>
-      </React.Suspense>
-    </GoogleOAuthProvider>
+    <React.Suspense fallback={<div>Loading...</div>}>
+      <ChakraProvider theme={theme}>
+        <Router>
+          <Box width="100vw">
+            <NavigationRouter loggedIn={isLoggedIn} />
+          </Box>
+        </Router>
+      </ChakraProvider>
+    </React.Suspense>
+  );
+};
+
+export const App = () => {
+  return (
+    <AuthenticationContextProvider>
+      <Splend />
+    </AuthenticationContextProvider>
   );
 };
 

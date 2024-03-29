@@ -1,30 +1,14 @@
 import { Flex, Text } from "@chakra-ui/react";
 import * as React from "react";
 import { useTheme } from "../../../../..";
-import { Icons } from "../../../../../assets";
-import { useGoogleLogin } from "@react-oauth/google";
-import axios from "axios";
+import { useAuthenticationContext } from "../../../../../utils";
 
 export const GoogleLoginButton: React.FC = () => {
   const { textStyles, colors } = useTheme();
-  const GoogleIcon = Icons.google;
-
-  const login = useGoogleLogin({
-    onSuccess: async (success) => {
-      await axios.post(
-        `${process.env.REACT_APP_SPLEND_SERVICE}/auth/google`,
-        {
-          code: success.code,
-        },
-        { withCredentials: true }
-      );
-      window.location.reload();
-    },
-    flow: "auth-code",
-  });
+  const { logIn } = useAuthenticationContext();
 
   return (
-    <button onClick={login}>
+    <button onClick={logIn}>
       <Flex
         bgColor={colors.white}
         px="4"
@@ -33,9 +17,8 @@ export const GoogleLoginButton: React.FC = () => {
         alignItems="center"
         gap="2.5"
       >
-        <GoogleIcon />
         <Text {...textStyles.body2_700} color={colors.darkBrand}>
-          Continue with Google
+          Access your Splend!
         </Text>
       </Flex>
     </button>
