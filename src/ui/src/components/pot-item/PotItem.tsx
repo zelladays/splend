@@ -14,25 +14,30 @@ type PotAmount = {
 };
 
 type PotItemProps = {
-  potId: string;
   potName: string;
   potAmount: PotAmount;
 };
 
-export const PotItem = React.memo(
-  ({ potId, potName, potAmount }: PotItemProps) => {
-    const { textStyles, colors } = useTheme();
+export const PotItem = React.memo(({ potName, potAmount }: PotItemProps) => {
+  const { textStyles, colors } = useTheme();
 
-    const potProgressPercentage = React.useMemo(() => {
-      return (100 * potAmount.progress.amount) / potAmount.goal.amount;
-    }, [potAmount.goal.amount, potAmount.progress.amount]);
+  const potProgressPercentage = React.useMemo(() => {
+    return (100 * potAmount.progress.amount) / potAmount.goal.amount;
+  }, [potAmount.goal.amount, potAmount.progress.amount]);
 
-    return (
-      <button>
+  return (
+    <button>
+      <Flex alignItems="center" flexDirection="column">
+        <Flex bgColor={colors.brand} p="2" borderRadius="4px 4px 0 0">
+          <Text {...textStyles.body2_700} color={colors.brandSecondary}>
+            {potName}
+          </Text>
+        </Flex>
         <Flex
-          borderWidth={8}
+          borderWidth={4}
           borderColor={colors.brand}
-          borderRadius={8}
+          borderRadius="0 0 4px 4px"
+          width="100%"
           py="4"
           px="8"
           position="relative"
@@ -46,11 +51,8 @@ export const PotItem = React.memo(
             bgColor={colors.brand}
             zIndex={-1}
           />
-          <Text {...textStyles.body2_700} color={colors.error}>
-            {potName}
-          </Text>
         </Flex>
-      </button>
-    );
-  }
-);
+      </Flex>
+    </button>
+  );
+});

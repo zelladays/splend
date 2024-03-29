@@ -19,7 +19,7 @@ export const ActionItem = React.memo(
       <Flex
         as="button"
         onClick={onClick}
-        borderRadius={8}
+        borderRadius={4}
         borderColor={colors.brand}
         borderWidth={3}
         alignItems="center"
@@ -27,8 +27,8 @@ export const ActionItem = React.memo(
         bgColor={isHovering ? colors.brand : "transparent"}
         p="2"
         gap="4"
-        maxHeight="16"
-        width={!isHovering ? "16" : "64"}
+        maxHeight="12"
+        width={!isHovering ? "12" : "64"}
         overflowX="clip"
         onMouseOver={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}

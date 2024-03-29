@@ -25,8 +25,9 @@ export const HomeScreen: React.FC = () => {
         alignItems="center"
         mt="200px"
         flexDirection="column"
+        gap="4"
       >
-        <HomeDescription />
+        <HomeDescription currency="£" amount={500} interval="month" />
         <HomePotSummary />
       </Flex>
     </Flex>

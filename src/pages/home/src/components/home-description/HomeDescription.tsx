@@ -1,10 +1,19 @@
 import { Flex, Heading, Text } from "@chakra-ui/react";
 import { useTheme } from "../../../../..";
 
-export const HomeDescription: React.FC = () => {
+type HomeDescriptionProps = {
+  amount: number;
+  currency: string;
+  interval: string;
+};
+
+export const HomeDescription = ({
+  interval,
+  amount,
+  currency,
+}: HomeDescriptionProps) => {
   const { textStyles, colors } = useTheme();
-  const amount = "£9,999,999";
-  const interval = "month";
+
   return (
     <Flex flexDirection="column" alignItems="center">
       <Heading {...textStyles.h1} color={colors.white}>
@@ -15,6 +24,7 @@ export const HomeDescription: React.FC = () => {
           You are saving:
         </Text>
         <Text {...textStyles.body3_700} color={colors.white}>
+          {currency}
           {amount}/{interval}
         </Text>
       </Flex>
