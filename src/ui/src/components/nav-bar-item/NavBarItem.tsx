@@ -4,13 +4,15 @@ import { Flex, Text } from "@chakra-ui/react";
 import { useTheme } from "../../../..";
 
 type NavBarItemProps = {
+  tabId: string;
   label: string;
   icon: keyof typeof Icons;
+  selectedTabId: string;
   onClick?: () => void;
 };
 
 export const NavBarItem = React.memo(
-  ({ label, icon, onClick }: NavBarItemProps) => {
+  ({ tabId, label, icon, selectedTabId, onClick }: NavBarItemProps) => {
     const [isHovering, setIsHovering] = React.useState(false);
     const { colors, textStyles } = useTheme();
     const Icon = Icons[icon];
@@ -24,7 +26,11 @@ export const NavBarItem = React.memo(
           alignItems="center"
           onMouseOver={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
-          bgColor={isHovering ? colors.brandTertiary : undefined}
+          bgColor={
+            isHovering || selectedTabId === tabId
+              ? colors.brandTertiary
+              : undefined
+          }
           borderRadius={8}
           transition="background-color 0.3s ease"
         >

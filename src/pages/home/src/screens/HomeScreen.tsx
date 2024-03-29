@@ -8,7 +8,7 @@ export const HomeScreen: React.FC = () => {
   return (
     <Flex flex={1} mt="8" ml="8" gap="8">
       <Box position="sticky" top={0} left={0}>
-        <HomeNavBar />
+        <HomeNavBar selectedTab="dashboard" />
       </Box>
 
       <Flex flexDirection="column">
