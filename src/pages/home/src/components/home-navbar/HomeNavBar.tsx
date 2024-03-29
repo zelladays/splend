@@ -1,5 +1,5 @@
 import { Flex } from "@chakra-ui/react";
-import { ActionItem } from "../../../../../ui";
+import { NavBarItem } from "../../../../../ui";
 import { useTheme } from "../../../../..";
 import { Logo } from "../logo";
 
@@ -15,9 +15,9 @@ export const HomeNavBar: React.FC = () => {
       borderRadius={8}
     >
       <Logo />
-      <ActionItem label="Profile" asset="profile" onClick={() => {}} />
-      <ActionItem label="Settings" asset="cog" onClick={() => {}} />
-      <ActionItem label="New pot" asset="add-pot" onClick={() => {}} />
+      <NavBarItem label="Dashboard" icon="profile" />
+      <NavBarItem label="Groups" icon="profile" />
+      <NavBarItem label="History" icon="profile" />
     </Flex>
   );
 };
