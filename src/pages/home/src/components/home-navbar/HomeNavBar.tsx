@@ -13,11 +13,15 @@ export const HomeNavBar: React.FC = () => {
       p="8"
       bgColor={colors.brandSecondary}
       borderRadius={8}
+      height="80vh"
     >
-      <Logo />
-      <NavBarItem label="Dashboard" icon="profile" />
-      <NavBarItem label="Groups" icon="profile" />
-      <NavBarItem label="History" icon="profile" />
+      <Flex p="8">
+        <Logo />
+      </Flex>
+
+      <NavBarItem label="Dashboard" icon="dashboard" />
+      <NavBarItem label="Groups" icon="groups" />
+      <NavBarItem label="History" icon="history" />
     </Flex>
   );
 };

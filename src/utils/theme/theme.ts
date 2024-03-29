@@ -4,6 +4,7 @@ import { textStyles } from "./textStyles";
 const colors = {
   brand: "#57558d",
   brandSecondary: "#353453",
+  brandTertiary: "#4E4C72",
   darkBrand: "#282743",
   white: "#FFFFFF",
   purpleDark: "#a980ef",

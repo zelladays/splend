@@ -12,11 +12,10 @@ export const Logo: React.FC = () => {
       borderColor={colors.white}
       borderRadius={8}
       pointerEvents="none"
-      width="123px"
       justifyContent="center"
       alignSelf="center"
     >
-      <Heading {...textStyles.body2_700} color={colors.white}>
+      <Heading {...textStyles.h3} color={colors.white}>
         Splend
       </Heading>
     </Flex>
