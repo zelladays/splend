@@ -1,7 +1,7 @@
 import { Box, Flex } from "@chakra-ui/react";
 import * as React from "react";
 
-import { HomeNavBar, HomeDescription, HomePotSummary } from "../components";
+import { HomeNavBar } from "../components";
 import { SearchBar } from "../../../../ui";
 
 export const HomeScreen: React.FC = () => {
