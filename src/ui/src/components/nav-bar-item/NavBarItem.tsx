@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Icons } from "../../../../assets";
+import { Icons, SvgIcon } from "../../../../assets";
 import { Flex, Text } from "@chakra-ui/react";
 import { useTheme } from "../../../..";
 
@@ -15,7 +15,6 @@ export const NavBarItem = React.memo(
   ({ tabId, label, icon, selectedTabId, onClick }: NavBarItemProps) => {
     const [isHovering, setIsHovering] = React.useState(false);
     const { colors, textStyles } = useTheme();
-    const Icon = Icons[icon];
 
     const tabIsSelected = React.useMemo(
       () => selectedTabId === tabId,
@@ -38,7 +37,7 @@ export const NavBarItem = React.memo(
           borderRadius={8}
           transition="all 0.3s ease"
         >
-          <Icon />
+          <SvgIcon icon={icon} color="white" />
           <Text color={colors.white} {...textStyles.body2_700}>
             {label}
           </Text>

@@ -81,7 +81,7 @@ export const CreatePotDrawer = () => {
             <Flex flexDirection="column" gap="8">
               <Flex gap="3">
                 <SvgIcon icon="pot" color="white" />
-                <Text color="white" {...textStyles.h3}>
+                <Text color="white" {...textStyles.h2_bold}>
                   Create Splend Pot
                 </Text>
               </Flex>

@@ -9,6 +9,11 @@ const colors = {
   pot_card_text: "#571058",
   pot_spendbtn: "#FFEAFD",
 
+  action_button_bg_1: "#B5FFAE",
+  action_button_text_1: "#4C7549",
+  action_button_bg_2: "#8FD0EC",
+  action_button_text_2: "#2A6A6F",
+
   red: "#FF5050",
 
   brand: "#57558d",
@@ -23,7 +28,7 @@ const colors = {
   greenDark: "#35c29e",
   greenLight: "#95f2af",
   error: "#FE392C",
-  grayLight: "#94949F",
+  grayLight: "#F6F6F6",
   grayLight1: "#E9E9E9",
   grayLight2: "#D3D3D3",
   buttonPrimary: "#48A5E9",

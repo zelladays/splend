@@ -16,7 +16,6 @@ export const HomeNavBar = React.memo(
         px="4"
         bgColor={colors.brand_grey}
         height="100vh"
-        boxShadow="0px 0px 3px rgba(255, 255, 255, 0.2)"
       >
         <Flex p="8">
           <Logo />

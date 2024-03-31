@@ -15,7 +15,7 @@ export const Logo: React.FC = () => {
       justifyContent="center"
       alignSelf="center"
     >
-      <Heading {...textStyles.h3} color={colors.white}>
+      <Heading {...textStyles.logo} color={colors.white}>
         Splend
       </Heading>
     </Flex>
