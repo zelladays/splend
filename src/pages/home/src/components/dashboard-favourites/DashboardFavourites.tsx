@@ -1,10 +1,13 @@
 import { Flex, Text } from "@chakra-ui/react";
 import * as React from "react";
-import { PotItem } from "../../../../../ui";
 import { useTheme } from "../../../../..";
+import { PotItem } from "../../../../../libs/data-access-types";
+import { PotCard } from "../../../../../ui";
 
 export const DashboardFavourites = React.memo(() => {
   const { textStyles, colors } = useTheme();
+  const pots = localStorage.getItem("pots");
+  const potItems: PotItem[] = pots ? JSON.parse(pots) : [];
 
   return (
     <Flex flexDirection="column" gap="3">
@@ -12,46 +15,13 @@ export const DashboardFavourites = React.memo(() => {
         Favourites
       </Text>
       <Flex flexWrap="wrap" width="100%" gap="6">
-        <PotItem
-          potName="LoveHolidays booking to Greece"
-          potAmount={{ goal: 2500, progress: 900 }}
-        />
-        <PotItem
-          potName="LoveHolidays booking to Greece"
-          potAmount={{ goal: 900, progress: 700 }}
-        />
-        <PotItem
-          potName="LoveHolidays booking to Greece"
-          potAmount={{ goal: 250, progress: 10 }}
-        />
-        <PotItem
-          potName="LoveHolidays booking to Greece"
-          potAmount={{ goal: 400, progress: 380 }}
-        />
-        <PotItem
-          potName="LoveHolidays booking to Greece"
-          potAmount={{ goal: 2500, progress: 900 }}
-        />
-        <PotItem
-          potName="LoveHolidays booking to Greece"
-          potAmount={{ goal: 2500, progress: 900 }}
-        />
-        <PotItem
-          potName="LoveHolidays booking to Greece"
-          potAmount={{ goal: 2500, progress: 900 }}
-        />
-        <PotItem
-          potName="LoveHolidays booking to Greece"
-          potAmount={{ goal: 2500, progress: 900 }}
-        />
-        <PotItem
-          potName="LoveHolidays booking to Greece"
-          potAmount={{ goal: 2500, progress: 900 }}
-        />
-        <PotItem
-          potName="LoveHolidays booking to Greece"
-          potAmount={{ goal: 2500, progress: 900 }}
-        />
+        {potItems.map((pot) => (
+          <PotCard
+            key={pot.id}
+            potName={pot.title}
+            potAmount={{ goal: pot.amount, progress: 0 }}
+          />
+        ))}
       </Flex>
     </Flex>
   );

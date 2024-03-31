@@ -11,6 +11,8 @@ type PotAmount = {
 type PotItemProps = {
   potName: string;
   potAmount: PotAmount;
+  onSpendClick?: () => void;
+  onDeleteClick?: () => void;
 };
 
 type FigureProps = {
@@ -39,17 +41,18 @@ const VerticalDivider = () => {
   return <Flex width="1px" height="100%" background={colors.pot_card_text} />;
 };
 
-export const PotItem = React.memo(({ potName, potAmount }: PotItemProps) => {
-  const { textStyles, colors } = useTheme();
-  const [isHovering, setIsHovering] = React.useState(false);
+export const PotCard = React.memo(
+  ({ potName, potAmount, onSpendClick, onDeleteClick }: PotItemProps) => {
+    const { textStyles, colors } = useTheme();
+    const [isHovering, setIsHovering] = React.useState(false);
 
-  const potProgressPercentage = React.useMemo(() => {
-    return (100 * potAmount.progress) / potAmount.goal;
-  }, [potAmount.goal, potAmount.progress]);
+    const potProgressPercentage = React.useMemo(() => {
+      return (100 * potAmount.progress) / potAmount.goal;
+    }, [potAmount.goal, potAmount.progress]);
 
-  return (
-    <button>
+    return (
       <Flex
+        as="button"
         position="relative"
         transition="all 0.2s ease-in-out"
         onMouseEnter={() => setIsHovering(true)}
@@ -68,7 +71,7 @@ export const PotItem = React.memo(({ potName, potAmount }: PotItemProps) => {
           py="6"
           gap="2.5"
         >
-          <Flex justifyContent="space-between" gap="8">
+          <Flex justifyContent="space-between" gap="8" width="100%">
             <Text
               {...textStyles.body2_400}
               color={colors.pot_card_text}
@@ -101,7 +104,12 @@ export const PotItem = React.memo(({ potName, potAmount }: PotItemProps) => {
             width="100%"
             bgColor={colors.pot_spendbtn}
             color={colors.pot_card_text}
+            onClick={onSpendClick}
             _hover={{ bgColor: colors.pot_spendbtn_hover }}
+            _active={{
+              bgColor: colors.pot_spendbtn_hover,
+              transform: "scale(1.1)",
+            }}
           >
             Spend
           </Button>
@@ -126,12 +134,14 @@ export const PotItem = React.memo(({ potName, potAmount }: PotItemProps) => {
           zIndex={1}
           mt="-8px"
           mr="-8px"
+          onClick={onDeleteClick}
           transition="all 0.2s ease-in-out"
           _hover={{ transform: "scale(1.2) rotate(0.5turn)" }}
+          _active={{ transform: "scale(1.8) rotate(0.5turn)" }}
         >
           <Icon as={SvgIcon} icon="cross" iconColor={colors.red} />
         </Flex>
       </Flex>
-    </button>
-  );
-});
+    );
+  }
+);
