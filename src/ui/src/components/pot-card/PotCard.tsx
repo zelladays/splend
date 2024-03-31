@@ -149,8 +149,7 @@ export const PotCard = React.memo(
             mr="-8px"
             onClick={onOpen}
             transition="all 0.2s ease-in-out"
-            _hover={{ transform: "scale(1.2) rotate(0.5turn)" }}
-            _active={{ transform: "scale(1.8) rotate(0.5turn)" }}
+            transform={isHovering ? "scale(1.2) rotate(0.5turn)" : "scale(0)"}
           >
             <Icon as={SvgIcon} icon="cross" iconColor={colors.red} />
           </Flex>
