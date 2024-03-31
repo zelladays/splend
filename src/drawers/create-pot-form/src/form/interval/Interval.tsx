@@ -31,9 +31,10 @@ export const Interval = ({ register, setValue }: FormProps) => {
       </Text>
       <Slider
         {...register("amountPerInterval")}
-        defaultValue={1}
-        min={1}
+        defaultValue={10}
+        min={10}
         max={350}
+        step={10}
         onChange={onAmountPerIntervalChange}
         onMouseEnter={() => setShowTooltip(true)}
         onMouseLeave={() => setShowTooltip(false)}
