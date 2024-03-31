@@ -2,6 +2,15 @@ import { extendTheme } from "@chakra-ui/react";
 import { textStyles } from "./textStyles";
 
 const colors = {
+  brand_grey: "#1A191E",
+  brand_lightgrey: "#3D3D4D",
+
+  pot_card: "#FFEAFD",
+  pot_card_text: "#571058",
+  pot_spendbtn: "#FFEAFD",
+
+  red: "#FF5050",
+
   brand: "#57558d",
   brandSecondary: "#353453",
   brandTertiary: "#4E4C72",
