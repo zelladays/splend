@@ -6,11 +6,13 @@ import { ReactComponent as History } from "./History.svg";
 import { ReactComponent as Groups } from "./Groups.svg";
 import { ReactComponent as Pot } from "./Pot.svg";
 import { ReactComponent as Collection } from "./Collection.svg";
+import { ReactComponent as Cross } from "./Cross.svg";
 
 export const Icons = {
   "add-pot": AddPot,
   cog: Cog,
   profile: Profile,
+  cross: Cross,
   dashboard: Dashboard,
   history: History,
   groups: Groups,
@@ -20,12 +22,12 @@ export const Icons = {
 
 export const SvgIcon = ({
   icon,
-  color,
+  iconColor,
 }: {
   icon: keyof typeof Icons;
-  color?: string;
+  iconColor?: string;
 }) => {
   const Icon = Icons[icon];
 
-  return <Icon color={color} />;
+  return <Icon color={iconColor} />;
 };

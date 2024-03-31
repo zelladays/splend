@@ -37,7 +37,7 @@ export const NavBarItem = React.memo(
           borderRadius={8}
           transition="all 0.3s ease"
         >
-          <SvgIcon icon={icon} color="white" />
+          <SvgIcon icon={icon} iconColor="white" />
           <Text color={colors.white} {...textStyles.body2_700}>
             {label}
           </Text>

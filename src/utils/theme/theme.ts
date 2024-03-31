@@ -6,8 +6,10 @@ const colors = {
   brand_lightgrey: "#3D3D4D",
 
   pot_card: "#FFEAFD",
+  pot_card_hover: "#ffd6fb",
   pot_card_text: "#571058",
-  pot_spendbtn: "#FFEAFD",
+  pot_spendbtn: "#FF99E2",
+  pot_spendbtn_hover: "#ff7edb",
 
   action_button_bg_1: "#B5FFAE",
   action_button_text_1: "#4C7549",

@@ -4,7 +4,7 @@ import { useTheme } from "../../../../..";
 import { Logo } from "../logo";
 import * as React from "react";
 
-export const HomeNavBar = React.memo(
+export const NavigationPanel = React.memo(
   ({ selectedTab }: { selectedTab: string }) => {
     const { colors } = useTheme();
 

@@ -1,16 +1,11 @@
-import { Flex, Text } from "@chakra-ui/react";
+import { Button, Flex, Icon, Text } from "@chakra-ui/react";
 import * as React from "react";
 import { useTheme } from "../../../..";
-
-type Amount = {
-  currency: string;
-  amount: number;
-  decimalPlaces: number;
-};
+import { SvgIcon } from "../../../../assets";
 
 type PotAmount = {
-  progress: Amount;
-  goal: Amount;
+  progress: number;
+  goal: number;
 };
 
 type PotItemProps = {
@@ -18,44 +13,123 @@ type PotItemProps = {
   potAmount: PotAmount;
 };
 
-export const PotItem = React.memo(({ potName, potAmount }: PotItemProps) => {
+type FigureProps = {
+  figure: string;
+  caption: string;
+};
+
+const Figure = React.memo(({ figure, caption }: FigureProps) => {
   const { textStyles, colors } = useTheme();
 
+  return (
+    <Flex flexDirection="column">
+      <Text {...textStyles.body1_700} color={colors.pot_card_text}>
+        {figure}
+      </Text>
+      <Text {...textStyles.body3_400} color={colors.pot_card_text}>
+        {caption}
+      </Text>
+    </Flex>
+  );
+});
+
+const VerticalDivider = () => {
+  const { colors } = useTheme();
+
+  return <Flex width="1px" height="100%" background={colors.pot_card_text} />;
+};
+
+export const PotItem = React.memo(({ potName, potAmount }: PotItemProps) => {
+  const { textStyles, colors } = useTheme();
+  const [isHovering, setIsHovering] = React.useState(false);
+
   const potProgressPercentage = React.useMemo(() => {
-    return (100 * potAmount.progress.amount) / potAmount.goal.amount;
-  }, [potAmount.goal.amount, potAmount.progress.amount]);
+    return (100 * potAmount.progress) / potAmount.goal;
+  }, [potAmount.goal, potAmount.progress]);
 
   return (
     <button>
       <Flex
-        alignItems="center"
-        flexDirection="column"
-        borderWidth={1}
-        borderColor={colors.white}
-        borderRadius="4px"
+        position="relative"
+        transition="all 0.2s ease-in-out"
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+        _hover={{
+          transform: "translate(0, -8px)",
+        }}
       >
-        <Flex background={colors.greenDark} px="6" py="2">
-          <Text {...textStyles.body2_700} color={colors.white}>
-            {potName}
-          </Text>
-        </Flex>
         <Flex
-          width="100%"
-          py="4"
+          alignItems="center"
+          flexDirection="column"
+          borderWidth={1}
+          bgColor={colors.pot_card}
+          borderRadius={8}
           px="8"
-          position="relative"
-          borderTopWidth={1}
-          borderColor={colors.white}
+          py="6"
+          gap="2.5"
         >
-          <Flex
-            position="absolute"
-            height="100%"
-            left={0}
-            top={0}
-            width={`${potProgressPercentage}%`}
-            background={colors.white}
-            zIndex={-1}
-          />
+          <Flex justifyContent="space-between" gap="8">
+            <Text
+              {...textStyles.body2_400}
+              color={colors.pot_card_text}
+              flexShrink={1}
+              textOverflow="ellipsis"
+              noOfLines={1}
+            >
+              {potName}
+            </Text>
+            <Text {...textStyles.body2_700} color={colors.pot_card_text}>
+              *
+            </Text>
+          </Flex>
+
+          <Flex gap="6">
+            <Figure
+              figure={"£" + potAmount.goal.toString()}
+              caption="Saving Goal"
+            />
+            <VerticalDivider />
+            <Figure
+              figure={"£" + potAmount.progress.toString()}
+              caption="Saved So Far"
+            />
+            <VerticalDivider />
+            <Figure figure="Ready" caption="ETA" />
+          </Flex>
+
+          <Button
+            width="100%"
+            bgColor={colors.pot_spendbtn}
+            color={colors.pot_card_text}
+            _hover={{ bgColor: colors.pot_spendbtn_hover }}
+          >
+            Spend
+          </Button>
+        </Flex>
+
+        <Flex
+          position="absolute"
+          height="6px"
+          left={0}
+          bottom={0}
+          width={isHovering ? `${potProgressPercentage}%` : 0}
+          background={colors.pot_spendbtn}
+          borderRadius="0 4px 4px 8px"
+          transition="all 0.2s ease-in-out"
+          zIndex={1}
+        />
+        <Flex
+          as="button"
+          position="absolute"
+          top={0}
+          right={0}
+          zIndex={1}
+          mt="-8px"
+          mr="-8px"
+          transition="all 0.2s ease-in-out"
+          _hover={{ transform: "scale(1.2) rotate(0.5turn)" }}
+        >
+          <Icon as={SvgIcon} icon="cross" iconColor={colors.red} />
         </Flex>
       </Flex>
     </button>

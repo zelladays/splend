@@ -2,9 +2,8 @@ import { Flex, Text } from "@chakra-ui/react";
 import { useTheme } from "../../../../..";
 import { SvgIcon } from "../../../../../assets";
 import { useDrawerContext } from "../../../../../utils";
-import * as React from "react";
 
-export const HomeActionButtons = () => {
+export const DashboardActionButtons = () => {
   const { setOpenDrawer } = useDrawerContext();
   const { textStyles, colors } = useTheme();
 
@@ -23,7 +22,7 @@ export const HomeActionButtons = () => {
         transition="all 0.3s ease"
         _hover={{ transform: "translate(0, -4px)" }}
       >
-        <SvgIcon icon="pot" color={colors.action_button_text_1} />
+        <SvgIcon icon="pot" iconColor={colors.action_button_text_1} />
         <Text color={colors.action_button_text_1} {...textStyles.h2_bold}>
           Create Splend Pot
         </Text>
@@ -41,7 +40,7 @@ export const HomeActionButtons = () => {
         transition="all 0.3s ease"
         _hover={{ transform: "translate(0, -4px)" }}
       >
-        <SvgIcon icon="pot" color={colors.action_button_text_2} />
+        <SvgIcon icon="pot" iconColor={colors.action_button_text_2} />
         <Text color={colors.action_button_text_2} {...textStyles.h2_bold}>
           Create Splend Collection
         </Text>
