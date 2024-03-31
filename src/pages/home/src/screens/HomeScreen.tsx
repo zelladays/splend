@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 import * as React from "react";
 
 import {
@@ -27,6 +27,7 @@ export const HomeScreen: React.FC = () => {
               flexDirection="column"
               borderRadius="16px"
               bgColor="white"
+              minHeight="90vh"
               width="100%"
             >
               <DashboardSummary />
