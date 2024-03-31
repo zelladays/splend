@@ -12,10 +12,10 @@ export const HomeNavBar = React.memo(
       <Flex
         flexDirection="column"
         gap="3"
-        p="8"
-        bgColor={colors.brandSecondary}
-        borderRadius={8}
-        height="90vh"
+        py="8"
+        px="4"
+        bgColor={colors.brand_grey}
+        height="100vh"
         boxShadow="0px 0px 3px rgba(255, 255, 255, 0.2)"
       >
         <Flex p="8">

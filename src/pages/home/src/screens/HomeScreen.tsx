@@ -15,7 +15,7 @@ export const HomeScreen: React.FC = () => {
   return (
     <FormProvider {...form}>
       <DrawerContextProvider>
-        <Flex flex={1} mt="8" ml="8" gap="8" position="relative">
+        <Flex flex={1} gap="8" position="relative">
           <Box position="sticky" top={0} left={0}>
             <HomeNavBar selectedTab="dashboard" />
           </Box>

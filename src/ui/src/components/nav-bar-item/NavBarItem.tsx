@@ -17,6 +17,11 @@ export const NavBarItem = React.memo(
     const { colors, textStyles } = useTheme();
     const Icon = Icons[icon];
 
+    const tabIsSelected = React.useMemo(
+      () => selectedTabId === tabId,
+      [selectedTabId, tabId]
+    );
+
     return (
       <button onClick={onClick}>
         <Flex
@@ -27,11 +32,9 @@ export const NavBarItem = React.memo(
           onMouseOver={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
           bgColor={
-            isHovering || selectedTabId === tabId
-              ? colors.brandTertiary
-              : undefined
+            isHovering || tabIsSelected ? colors.brand_lightgrey : undefined
           }
-          _hover={{ transform: "translate(0, -2px)" }}
+          _hover={!tabIsSelected ? { pl: "8" } : undefined}
           borderRadius={8}
           transition="all 0.3s ease"
         >
