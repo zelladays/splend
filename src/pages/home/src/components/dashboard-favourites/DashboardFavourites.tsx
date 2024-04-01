@@ -46,7 +46,7 @@ export const DashboardFavourites = React.memo(() => {
 
   return (
     <Flex flexDirection="column" gap="3">
-      <Text {...textStyles.h2} color={colors.brand_grey}>
+      <Text {...textStyles.h2} color={colors.text_primary}>
         Favourites
       </Text>
       <Flex flexWrap="wrap" width="100%" gap="6">

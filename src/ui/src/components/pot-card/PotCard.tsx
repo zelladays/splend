@@ -3,6 +3,8 @@ import * as React from "react";
 import { useTheme } from "../../../..";
 import { SvgIcon } from "../../../../assets";
 import { DeletePotModal } from "../../../../libs/feature-delete-pot-modal/src";
+import { Figure } from "../figure";
+import { VDivider } from "../vdivider";
 
 type PotAmount = {
   progress: number;
@@ -17,32 +19,6 @@ type PotItemProps = {
   onDeleteClick?: (id: string) => void;
 };
 
-type FigureProps = {
-  figure: string;
-  caption: string;
-};
-
-const Figure = React.memo(({ figure, caption }: FigureProps) => {
-  const { textStyles, colors } = useTheme();
-
-  return (
-    <Flex flexDirection="column">
-      <Text {...textStyles.body1_700} color={colors.pot_card_text}>
-        {figure}
-      </Text>
-      <Text {...textStyles.body3_400} color={colors.pot_card_text}>
-        {caption}
-      </Text>
-    </Flex>
-  );
-});
-
-const VerticalDivider = () => {
-  const { colors } = useTheme();
-
-  return <Flex width="1px" height="100%" background={colors.pot_card_text} />;
-};
-
 export const PotCard = React.memo(
   ({
     potId,
@@ -53,6 +29,7 @@ export const PotCard = React.memo(
   }: PotItemProps) => {
     const { textStyles, colors } = useTheme();
     const [isHovering, setIsHovering] = React.useState(false);
+    const [isCloseIconHovering, setIsCloseIconHovering] = React.useState(false);
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     const potProgressPercentage = React.useMemo(() => {
@@ -62,6 +39,8 @@ export const PotCard = React.memo(
     const handleDelete = React.useCallback(() => {
       onDeleteClick?.(potId);
     }, [onDeleteClick, potId]);
+
+    console.log({ isCloseIconHovering });
 
     return (
       <>
@@ -78,11 +57,11 @@ export const PotCard = React.memo(
           <Flex
             alignItems="center"
             flexDirection="column"
-            bgColor={colors.pot_card}
+            bgColor={isHovering ? colors.pot_card_hover : colors.pot_card}
             borderRadius={8}
             px="8"
             py="6"
-            gap="2.5"
+            gap="4"
           >
             <Flex justifyContent="space-between" gap="8" width="100%">
               <Text
@@ -104,61 +83,88 @@ export const PotCard = React.memo(
                 figure={"£" + potAmount.goal.toString()}
                 caption="Saving Goal"
               />
-              <VerticalDivider />
+              <Flex py="2">
+                <VDivider color={colors.pot_card_text} />
+              </Flex>
               <Figure
                 figure={"£" + potAmount.progress.toString()}
                 caption="Saved So Far"
               />
-              <VerticalDivider />
+              <Flex py="2">
+                <VDivider color={colors.pot_card_text} />
+              </Flex>
               <Figure figure="Ready" caption="ETA" />
             </Flex>
 
-            <Button
+            <Flex
+              as="button"
               width="100%"
               bgColor={colors.pot_spendbtn}
               color={colors.pot_card_text}
               onClick={onSpendClick}
+              px="2"
+              py="3"
+              gap="2.5"
+              borderRadius={4}
+              alignItems="center"
+              justifyContent="center"
               _hover={{ bgColor: colors.pot_spendbtn_hover }}
               _active={{
                 bgColor: colors.pot_spendbtn_hover,
                 transform: "scale(1.1)",
               }}
             >
-              Spend
-            </Button>
+              <SvgIcon icon="money" iconColor="white" />
+              <Text {...textStyles.body2_700} color={colors.pot_card_text}>
+                Spend
+              </Text>
+            </Flex>
           </Flex>
 
           <Flex
             position="absolute"
-            height="6px"
-            left={0}
+            height="2px"
+            left={2}
             bottom={0}
-            width={isHovering ? `${potProgressPercentage}%` : 0}
+            width={isHovering ? `${Math.max(10, potProgressPercentage)}%` : 0}
             background={colors.pot_spendbtn}
-            borderRadius="0 4px 4px 8px"
-            transition="all 0.2s ease-in-out"
-            zIndex={1}
+            borderRadius="100%"
+            transition="all 0.5s ease-in-out"
           />
           <Flex
             as="button"
             position="absolute"
             top={0}
             right={0}
-            zIndex={1}
             mt="-8px"
             mr="-8px"
             onClick={onOpen}
+            onMouseEnter={() => setIsCloseIconHovering(true)}
+            onMouseLeave={() => setIsCloseIconHovering(false)}
             transition="all 0.2s ease-in-out"
-            transform={isHovering ? "scale(1.2) rotate(0.5turn)" : "scale(0)"}
+            transform={
+              isHovering
+                ? `scale(${isCloseIconHovering ? 1.4 : 1.2}) rotate(0.5turn)`
+                : "scale(0)"
+            }
           >
-            <Icon as={SvgIcon} icon="cross" iconColor={colors.red} />
+            <Icon
+              as={SvgIcon}
+              icon="cross"
+              zIndex={1}
+              iconColor={
+                isCloseIconHovering
+                  ? colors.icon_close_hover
+                  : colors.icon_close
+              }
+            />
           </Flex>
         </Flex>
         <DeletePotModal
           isOpen={isOpen}
           onClose={onClose}
           onDelete={handleDelete}
-          potId=""
+          potId={potId}
         />
       </>
     );

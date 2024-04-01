@@ -7,6 +7,7 @@ import { ReactComponent as Groups } from "./Groups.svg";
 import { ReactComponent as Pot } from "./Pot.svg";
 import { ReactComponent as Collection } from "./Collection.svg";
 import { ReactComponent as Cross } from "./Cross.svg";
+import { ReactComponent as Money } from "./Money.svg";
 
 export const Icons = {
   "add-pot": AddPot,
@@ -18,6 +19,7 @@ export const Icons = {
   groups: Groups,
   pot: Pot,
   collection: Collection,
+  money: Money,
 };
 
 export const SvgIcon = ({

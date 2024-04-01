@@ -1,6 +1,7 @@
 import { Flex, Text } from "@chakra-ui/react";
 import * as React from "react";
 import { useTheme } from "../../../..";
+import { hexToRGB } from "../../../../utils";
 
 type SummaryCardProps = {
   title: string;
@@ -17,7 +18,7 @@ export const SummaryCard = React.memo(
         as="button"
         px="8"
         py="3"
-        borderColor="rgba(0, 0, 0, 0.25)"
+        borderColor={hexToRGB(colors.text_primary, 0.25)}
         borderWidth="1px"
         borderRadius={8}
         flexDirection="column"
@@ -27,15 +28,15 @@ export const SummaryCard = React.memo(
         transition="all 0.2s ease-in-out"
         position="relative"
         cursor="cell"
-        _hover={{ bgColor: "white" }}
+        _hover={{ bgColor: hexToRGB(colors.text_primary, 0.1) }}
       >
-        <Text {...textStyles.body2_400} color={colors.brand_grey}>
+        <Text {...textStyles.body2_400} color={colors.text_primary}>
           {title}
         </Text>
-        <Text {...textStyles.body1_700} color={colors.brand_grey}>
+        <Text {...textStyles.body1_700} color={colors.text_primary}>
           {figure}
         </Text>
-        <Text {...textStyles.body4_400} color={colors.brand_grey}>
+        <Text {...textStyles.body4_400} color={colors.text_primary}>
           {description}
         </Text>
       </Flex>

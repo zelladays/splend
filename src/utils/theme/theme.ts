@@ -5,18 +5,21 @@ const colors = {
   brand_grey: "#1A191E",
   brand_lightgrey: "#3D3D4D",
 
-  pot_card: "#FFEAFD",
-  pot_card_hover: "#ffd6fb",
-  pot_card_text: "#571058",
-  pot_spendbtn: "#FF99E2",
-  pot_spendbtn_hover: "#ff7edb",
+  pot_card: "#31313D",
+  pot_card_hover: "#3f3f4e",
+  pot_card_text: "#FFFFFF",
+  pot_spendbtn: "#3D66F9",
+  pot_spendbtn_hover: "#7893f7",
 
   action_button_bg_1: "#B5FFAE",
   action_button_text_1: "#4C7549",
   action_button_bg_2: "#8FD0EC",
   action_button_text_2: "#2A6A6F",
 
-  red: "#FF5050",
+  icon_close: "#e92a2a",
+  icon_close_hover: "#ff6767",
+
+  text_primary: "#FFFFFF",
 
   brand: "#57558d",
   brandSecondary: "#353453",

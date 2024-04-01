@@ -22,17 +22,11 @@ export const HomeScreen: React.FC = () => {
             <NavigationPanel selectedTab="dashboard" />
           </Box>
 
-          <Flex p="32px 32px 32px 0" width="100%">
-            <Flex
-              flexDirection="column"
-              borderRadius="16px"
-              bgColor="white"
-              minHeight="90vh"
-              width="100%"
-            >
+          <Flex p="32px 32px 0 0" width="100%">
+            <Flex flexDirection="column" minHeight="90vh" width="100%">
               <DashboardSummary />
               <Flex p="8" flexDirection="column" gap="8">
-                <DashboardActionButtons />
+                {/* <DashboardActionButtons /> */}
                 <DashboardFavourites />
               </Flex>
             </Flex>
