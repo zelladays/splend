@@ -51,7 +51,7 @@ export const DeletePotModal = React.memo(
               borderColor={colors.white}
               borderRadius={8}
               _hover={{
-                bgColor: hexToRGB(colors.brand_grey, 0.2),
+                bgColor: hexToRGB(colors.brand_dark_grey, 0.2),
               }}
             >
               Cancel

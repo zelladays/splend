@@ -5,9 +5,9 @@ import {
   Flex,
   Text,
   useToast,
+  CloseButton,
 } from "@chakra-ui/react";
-import { SvgIcon } from "../../../../../assets";
-import { useDrawerContext } from "../../../../../utils";
+import { hexToRGB, useDrawerContext } from "../../../../../utils";
 import { useTheme } from "../../../../..";
 import { useFormContext } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
@@ -64,13 +64,12 @@ export const CreatePotDrawer = () => {
     >
       <DrawerOverlay />
       <DrawerContent
-        mr="8"
-        my="8"
-        bgColor={colors.brandSecondary}
-        p="12"
-        borderRadius={8}
+        bgColor={colors.brand_grey}
+        px="12"
+        pb="12"
         gap="8"
-        boxShadow="0px 0px 3px rgba(255, 255, 255, 0.2)"
+        borderLeftWidth={1}
+        borderColor={hexToRGB(colors.white, 0.2)}
       >
         <form onSubmit={handleSubmit(onSubmit)} style={{ flex: 1 }}>
           <Flex
@@ -79,11 +78,21 @@ export const CreatePotDrawer = () => {
             height="100%"
           >
             <Flex flexDirection="column" gap="8">
-              <Flex gap="3">
-                <SvgIcon icon="pot" iconColor="white" />
-                <Text color="white" {...textStyles.h2_bold}>
+              <Flex
+                gap="3"
+                alignItems="center"
+                justifyContent="space-between"
+                borderBottomWidth={1}
+                borderBottomColor={hexToRGB(colors.white, 0.2)}
+                py="6"
+              >
+                <Text color={colors.text_primary} {...textStyles.h2_bold}>
                   Create Splend Pot
                 </Text>
+                <CloseButton
+                  onClick={closeDrawer}
+                  color={colors.text_primary}
+                />
               </Flex>
               <Flex flexDirection="column" gap="8">
                 <Title register={register} />

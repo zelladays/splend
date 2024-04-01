@@ -41,8 +41,6 @@ export const PotCard = React.memo(
       onDeleteClick?.(potId);
     }, [onDeleteClick, potId]);
 
-    console.log({ isCloseIconHovering });
-
     return (
       <>
         <Flex

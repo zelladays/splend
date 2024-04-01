@@ -2,7 +2,8 @@ import { extendTheme } from "@chakra-ui/react";
 import { textStyles } from "./textStyles";
 
 const colors = {
-  brand_grey: "#1A191E",
+  brand_dark_grey: "#1A191E",
+  brand_grey: "#31313D",
   brand_lightgrey: "#3D3D4D",
 
   pot_card: "#31313D",

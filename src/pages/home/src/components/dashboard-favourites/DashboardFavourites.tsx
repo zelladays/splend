@@ -9,10 +9,10 @@ const NoPotPlaceholder = React.memo(() => {
 
   return (
     <Flex width="100%" height="100%" flexDirection="column">
-      <Text {...textStyles.body1_400} color={colors.brand_grey}>
+      <Text {...textStyles.body1_400} color={colors.brand_dark_grey}>
         You have no favourites yet
       </Text>
-      <Text {...textStyles.body3_400} color={colors.brand_grey}>
+      <Text {...textStyles.body3_400} color={colors.brand_dark_grey}>
         Add a pot to get started
       </Text>
     </Flex>

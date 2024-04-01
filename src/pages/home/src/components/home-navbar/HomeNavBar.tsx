@@ -19,7 +19,7 @@ export const NavigationPanel = React.memo(
         flexDirection="column"
         py="8"
         px="4"
-        bgColor={colors.brand_grey}
+        bgColor={colors.brand_dark_grey}
         height="100vh"
         justifyContent="space-between"
       >

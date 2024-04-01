@@ -11,6 +11,8 @@ import { useTheme } from "../../../../..";
 import { FormProps } from "../types";
 import * as React from "react";
 
+const SAVING_MAXIMUM = 350;
+
 export const Interval = ({ register, setValue }: FormProps) => {
   const { textStyles } = useTheme();
   const [showTooltip, setShowTooltip] = React.useState(false);
@@ -30,10 +32,10 @@ export const Interval = ({ register, setValue }: FormProps) => {
         Amount per interval
       </Text>
       <Slider
-        {...register("amountPerInterval")}
+        {...register("amountPerInterval", { required: true })}
         defaultValue={10}
         min={10}
-        max={350}
+        max={SAVING_MAXIMUM}
         step={10}
         onChange={onAmountPerIntervalChange}
         onMouseEnter={() => setShowTooltip(true)}
@@ -46,7 +48,7 @@ export const Interval = ({ register, setValue }: FormProps) => {
           hasArrow
           bg="teal.500"
           color="white"
-          placement="top"
+          placement="bottom"
           isOpen={showTooltip}
           label={`£${amountPerIntervalValue}`}
         >
