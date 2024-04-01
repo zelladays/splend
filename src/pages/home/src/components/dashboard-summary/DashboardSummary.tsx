@@ -2,20 +2,31 @@ import * as React from "react";
 import { Flex, Text } from "@chakra-ui/react";
 import { useTheme } from "../../../../..";
 import { SummaryCard } from "../../../../../ui";
+import { DashboardActionButtons } from "../home-action-buttons";
 
-export const DashboardSummary = React.memo(() => {
+const DashboardHeader = () => {
   const { textStyles, colors } = useTheme();
 
   return (
-    <Flex p="8" flexDirection="column" gap="8">
+    <Flex justifyContent="space-between">
       <Flex flexDirection="column">
-        <Text {...textStyles.body3_400} color="rgba(175, 175, 175, 0.5)">
+        <Text {...textStyles.body3_400} color="rgba(175, 175, 175, 1)">
           It's time to Splend!
         </Text>
         <Text {...textStyles.h1} color={colors.text_primary}>
           Dashboard
         </Text>
       </Flex>
+
+      <DashboardActionButtons />
+    </Flex>
+  );
+};
+
+export const DashboardSummary = React.memo(() => {
+  return (
+    <Flex p="8" flexDirection="column" gap="8">
+      <DashboardHeader />
       <Flex gap="6">
         <SummaryCard
           title="Saving Interval"

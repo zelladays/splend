@@ -25,11 +25,15 @@ export const Icons = {
 export const SvgIcon = ({
   icon,
   iconColor,
+  size,
 }: {
   icon: keyof typeof Icons;
   iconColor?: string;
+  size?: number;
 }) => {
   const Icon = Icons[icon];
 
-  return <Icon color={iconColor} />;
+  const sizing = size ? { width: size, height: size } : {};
+
+  return <Icon color={iconColor} {...sizing} />;
 };

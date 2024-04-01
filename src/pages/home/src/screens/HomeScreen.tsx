@@ -3,7 +3,6 @@ import * as React from "react";
 
 import {
   NavigationPanel,
-  DashboardActionButtons,
   DashboardSummary,
   DashboardFavourites,
 } from "../components";
@@ -26,7 +25,6 @@ export const HomeScreen: React.FC = () => {
             <Flex flexDirection="column" minHeight="90vh" width="100%">
               <DashboardSummary />
               <Flex p="8" flexDirection="column" gap="8">
-                {/* <DashboardActionButtons /> */}
                 <DashboardFavourites />
               </Flex>
             </Flex>

@@ -11,8 +11,8 @@ const colors = {
   pot_spendbtn: "#3D66F9",
   pot_spendbtn_hover: "#7893f7",
 
-  action_button_bg_1: "#B5FFAE",
-  action_button_text_1: "#4C7549",
+  action_button_bg_1: "#3D3D4C",
+  action_button_text_1: "#ffffff",
   action_button_bg_2: "#8FD0EC",
   action_button_text_2: "#2A6A6F",
 
