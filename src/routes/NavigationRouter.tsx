@@ -11,10 +11,12 @@ export function NavigationRouter({ loggedIn }: { loggedIn: boolean }) {
       <Routes location={location} key={location.pathname}>
         <Route
           path="/login"
-          element={loggedIn ? <Navigate replace to="/home" /> : <LoginScreen />}
+          element={
+            loggedIn ? <Navigate replace to="/dashboard" /> : <LoginScreen />
+          }
         />
         <Route
-          path="/home"
+          path="/dashboard"
           element={loggedIn ? <HomeScreen /> : <Navigate replace to="/login" />}
         />
         <Route path="*" element={<Navigate replace to="/login" />} />

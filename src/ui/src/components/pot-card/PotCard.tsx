@@ -1,10 +1,11 @@
-import { Button, Flex, Icon, Text, useDisclosure } from "@chakra-ui/react";
+import { Flex, Icon, Text, useDisclosure } from "@chakra-ui/react";
 import * as React from "react";
 import { useTheme } from "../../../..";
 import { SvgIcon } from "../../../../assets";
 import { DeletePotModal } from "../../../../libs/feature-delete-pot-modal/src";
 import { Figure } from "../figure";
 import { VDivider } from "../vdivider";
+import { StarIcon } from "@chakra-ui/icons";
 
 type PotAmount = {
   progress: number;
@@ -61,7 +62,7 @@ export const PotCard = React.memo(
             borderRadius={8}
             px="8"
             py="6"
-            gap="4"
+            gap="5"
           >
             <Flex justifyContent="space-between" gap="8" width="100%">
               <Text
@@ -73,9 +74,12 @@ export const PotCard = React.memo(
               >
                 {potName}
               </Text>
-              <Text {...textStyles.body2_700} color={colors.pot_card_text}>
-                *
-              </Text>
+              <StarIcon
+                color={colors.pot_card_text}
+                width="18px"
+                height="18px"
+                _hover={{ color: colors.grayLight }}
+              />
             </Flex>
 
             <Flex gap="6">

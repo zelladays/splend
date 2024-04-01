@@ -3,10 +3,16 @@ import { NavBarItem } from "../../../../../ui";
 import { useTheme } from "../../../../..";
 import { Logo } from "../logo";
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
 
 export const NavigationPanel = React.memo(
   ({ selectedTab }: { selectedTab: string }) => {
     const { colors } = useTheme();
+    const navigate = useNavigate();
+
+    const handleNavigateHome = React.useCallback(() => {
+      navigate("/dashboard");
+    }, [navigate]);
 
     return (
       <Flex
@@ -18,7 +24,7 @@ export const NavigationPanel = React.memo(
         justifyContent="space-between"
       >
         <Flex flexDirection="column" gap="3">
-          <Flex p="8">
+          <Flex as="button" p="8" onClick={handleNavigateHome}>
             <Logo />
           </Flex>
 

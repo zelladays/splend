@@ -20,6 +20,13 @@ const colors = {
   icon_close: "#e92a2a",
   icon_close_hover: "#ff6767",
 
+  primary_button_positive: "#775fd4",
+  primary_button_positive_hover: "#5a47a8d4",
+  primary_button_negative: "#e92a2a",
+  primary_button_negative_hover: "#c21a1a",
+
+  secondary_button: "#a6a6cc",
+
   text_primary: "#FFFFFF",
 
   brand: "#57558d",
