@@ -11,32 +11,40 @@ export const NavigationPanel = React.memo(
     return (
       <Flex
         flexDirection="column"
-        gap="3"
         py="8"
         px="4"
         bgColor={colors.brand_grey}
         height="100vh"
+        justifyContent="space-between"
       >
-        <Flex p="8">
-          <Logo />
-        </Flex>
+        <Flex flexDirection="column" gap="3">
+          <Flex p="8">
+            <Logo />
+          </Flex>
 
+          <NavBarItem
+            tabId="dashboard"
+            label="Dashboard"
+            icon="dashboard"
+            selectedTabId={selectedTab}
+          />
+          <NavBarItem
+            tabId="groups"
+            label="Groups"
+            icon="groups"
+            selectedTabId={selectedTab}
+          />
+          <NavBarItem
+            tabId="history"
+            label="History"
+            icon="history"
+            selectedTabId={selectedTab}
+          />
+        </Flex>
         <NavBarItem
-          tabId="dashboard"
-          label="Dashboard"
-          icon="dashboard"
-          selectedTabId={selectedTab}
-        />
-        <NavBarItem
-          tabId="groups"
-          label="Groups"
-          icon="groups"
-          selectedTabId={selectedTab}
-        />
-        <NavBarItem
-          tabId="history"
-          label="History"
-          icon="history"
+          tabId="settings"
+          label="Settings"
+          icon="cog"
           selectedTabId={selectedTab}
         />
       </Flex>

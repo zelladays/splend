@@ -21,7 +21,10 @@ export const DashboardActionButtons = () => {
         gap="4"
         onClick={() => setOpenDrawer("createPot")}
         transition="all 0.3s ease"
-        _hover={{ transform: "translate(0, -4px)" }}
+        _hover={{
+          transform: "translate(0, -4px)",
+          bgColor: colors.action_button_bg_1_hover,
+        }}
       >
         <SvgIcon icon="pot" iconColor={colors.action_button_text_1} size={24} />
         <Text color={colors.action_button_text_1} {...textStyles.body2_700}>
