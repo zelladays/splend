@@ -35,7 +35,7 @@ export const Collection = ({ register }: FormProps) => {
 
   return (
     <Flex flexDirection="column" gap="1">
-      <Text {...textStyles.body2_700} color="white">
+      <Text {...textStyles.body2_700} color={colors.text_primary}>
         Add to collection
       </Text>
       <Menu closeOnSelect={true}>

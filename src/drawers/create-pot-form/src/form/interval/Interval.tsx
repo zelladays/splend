@@ -14,7 +14,7 @@ import * as React from "react";
 const SAVING_MAXIMUM = 350;
 
 export const Interval = ({ register, setValue }: FormProps) => {
-  const { textStyles } = useTheme();
+  const { textStyles, colors } = useTheme();
   const [showTooltip, setShowTooltip] = React.useState(false);
   const [amountPerIntervalValue, setAmountPerIntervalValue] = React.useState(1);
 
@@ -27,13 +27,13 @@ export const Interval = ({ register, setValue }: FormProps) => {
   );
 
   return (
-    <Flex flexDirection="column" gap="3">
-      <Text {...textStyles.body2_400} color="white">
+    <Flex flexDirection="column" gap="6">
+      <Text {...textStyles.body2_700} color={colors.text_primary}>
         Amount per interval
       </Text>
       <Slider
         {...register("amountPerInterval", { required: true })}
-        defaultValue={10}
+        defaultValue={SAVING_MAXIMUM / 2}
         min={10}
         max={SAVING_MAXIMUM}
         step={10}
@@ -41,8 +41,8 @@ export const Interval = ({ register, setValue }: FormProps) => {
         onMouseEnter={() => setShowTooltip(true)}
         onMouseLeave={() => setShowTooltip(false)}
       >
-        <SliderTrack>
-          <SliderFilledTrack />
+        <SliderTrack borderRadius={0} height="6px">
+          <SliderFilledTrack bgColor={colors.brand_dark_grey} />
         </SliderTrack>
         <Tooltip
           hasArrow
