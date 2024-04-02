@@ -1,11 +1,11 @@
 import React, { createContext } from "react";
 import { useFormContext } from "react-hook-form";
 
-type Drawers = "createPot";
+type DrawerVariant = "createPot";
 
 type DrawerContextProps = {
-  openDrawer: Drawers | null;
-  setOpenDrawer: (drawer: Drawers) => void;
+  openDrawer: DrawerVariant | null;
+  setOpenDrawer: (drawer: DrawerVariant) => void;
   closeDrawer: () => void;
 };
 
@@ -14,7 +14,9 @@ export const DrawerContext = createContext<DrawerContextProps | null>(null);
 export const DrawerContextProvider = ({
   children,
 }: React.PropsWithChildren) => {
-  const [openDrawer, setOpenDrawer] = React.useState<Drawers | null>(null);
+  const [openDrawer, setOpenDrawer] = React.useState<DrawerVariant | null>(
+    null
+  );
   const { reset } = useFormContext();
 
   const closeDrawer = React.useCallback(() => {

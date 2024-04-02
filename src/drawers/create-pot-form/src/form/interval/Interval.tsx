@@ -13,7 +13,7 @@ import * as React from "react";
 
 const SAVING_MAXIMUM = 350;
 
-export const Interval = ({ register, setValue }: FormProps) => {
+export const Interval = ({ errors, register, setValue }: FormProps) => {
   const { textStyles, colors } = useTheme();
   const [showTooltip, setShowTooltip] = React.useState(false);
   const [amountPerIntervalValue, setAmountPerIntervalValue] = React.useState(1);
@@ -21,7 +21,11 @@ export const Interval = ({ register, setValue }: FormProps) => {
   const onAmountPerIntervalChange = React.useCallback(
     (value: number) => {
       setAmountPerIntervalValue(value);
-      setValue?.("amountPerInterval", value);
+      setValue?.("amountPerInterval", value, {
+        shouldValidate: true,
+        shouldDirty: true,
+        shouldTouch: true,
+      });
     },
     [setValue]
   );
@@ -32,7 +36,10 @@ export const Interval = ({ register, setValue }: FormProps) => {
         Amount per interval
       </Text>
       <Slider
-        {...register("amountPerInterval", { required: true })}
+        {...register("amountPerInterval", {
+          required: "Required field",
+          value: undefined,
+        })}
         defaultValue={SAVING_MAXIMUM / 2}
         min={10}
         max={SAVING_MAXIMUM}
@@ -55,6 +62,11 @@ export const Interval = ({ register, setValue }: FormProps) => {
           <SliderThumb boxSize={4} />
         </Tooltip>
       </Slider>
+      {errors?.amountPerInterval ? (
+        <Text {...textStyles.body3_700} color={colors.error}>
+          {errors.amountPerInterval.message}
+        </Text>
+      ) : null}
     </Flex>
   );
 };

@@ -24,7 +24,7 @@ import {
 } from "../../form";
 
 export const CreatePotDrawer = () => {
-  const { register, control, handleSubmit, setValue } =
+  const { control, formState, register, handleSubmit, setValue } =
     useFormContext<CreatePot>();
   const { openDrawer, closeDrawer } = useDrawerContext();
   const { colors, textStyles } = useTheme();
@@ -95,11 +95,15 @@ export const CreatePotDrawer = () => {
                 />
               </Flex>
               <Flex flexDirection="column" gap="8">
-                <Title register={register} />
-                <Description register={register} />
-                <Collection register={register} />
-                <Amount register={register} />
-                <Interval register={register} setValue={setValue} />
+                <Title register={register} errors={formState.errors} />
+                <Description register={register} errors={formState.errors} />
+                <Collection register={register} errors={formState.errors} />
+                <Amount register={register} errors={formState.errors} />
+                <Interval
+                  register={register}
+                  setValue={setValue}
+                  errors={formState.errors}
+                />
               </Flex>
             </Flex>
             <ActionButtons />

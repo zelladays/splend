@@ -11,7 +11,7 @@ import { hexToRGB } from "../../../../../utils";
 import * as React from "react";
 import { useWatch } from "react-hook-form";
 
-export const Amount = ({ register }: FormProps) => {
+export const Amount = ({ errors, register }: FormProps) => {
   const { textStyles, colors } = useTheme();
   const [isFocused, setIsFocused] = React.useState(false);
   const amountValue = useWatch({ name: "amount" });
@@ -42,7 +42,13 @@ export const Amount = ({ register }: FormProps) => {
           type="number"
           placeholder="Enter the goal to save for this pot..."
           id="amount"
-          {...register("amount", { required: true })}
+          {...register("amount", {
+            required: "Required field",
+            value: undefined,
+            setValueAs: (value) =>
+              value === "" ? undefined : parseFloat(value),
+            validate: (value) => value !== null && value >= 0,
+          })}
           borderRadius={4}
           borderWidth={0}
           pl={amountValue ? "4" : 0}
@@ -59,6 +65,11 @@ export const Amount = ({ register }: FormProps) => {
           transition="all 0.1s ease-in-out"
         />
       </InputGroup>
+      {errors?.amount ? (
+        <Text {...textStyles.body3_700} color={colors.error} pt="1">
+          {errors.amount.message}
+        </Text>
+      ) : null}
     </Flex>
   );
 };

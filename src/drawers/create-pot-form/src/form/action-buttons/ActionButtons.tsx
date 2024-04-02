@@ -1,7 +1,7 @@
 import { Button, Flex } from "@chakra-ui/react";
 import { useTheme } from "../../../../..";
 import { useFormContext } from "react-hook-form";
-import { useDrawerContext } from "../../../../../utils";
+import { hexToRGB, useDrawerContext } from "../../../../../utils";
 
 export const ActionButtons = () => {
   const { colors } = useTheme();
@@ -12,30 +12,37 @@ export const ActionButtons = () => {
 
   return (
     <Flex justifyContent="space-between">
-      <Button
-        variant="outline"
+      <Flex
+        as={Button}
         isDisabled={isSubmitting}
+        px="4"
+        py="2"
         onClick={closeDrawer}
-        color="white"
+        bgColor="transparent"
+        borderColor={colors.white}
+        color={colors.text_primary}
+        borderRadius={8}
         _hover={{
-          bg: "rgba(255, 255, 255, 0.2)",
-          transform: "translate(0px, -4px)",
+          bgColor: hexToRGB(colors.brand_dark_grey, 0.2),
         }}
       >
         Cancel
-      </Button>
-      <Button
+      </Flex>
+      <Flex
+        as={Button}
         type="submit"
+        px="4"
+        py="2"
         isLoading={isSubmitting}
-        bgColor={colors.buttonPrimary}
-        color="white"
+        color={colors.text_primary}
+        bgColor={colors.primary_button_positive}
+        borderRadius={8}
         _hover={{
-          bg: colors.buttonPrimary_hover,
-          transform: "translate(0px, -4px)",
+          bgColor: colors.primary_button_positive_hover,
         }}
       >
         Create
-      </Button>
+      </Flex>
     </Flex>
   );
 };

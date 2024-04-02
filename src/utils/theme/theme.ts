@@ -21,14 +21,15 @@ const colors = {
   icon_close: "#e92a2a",
   icon_close_hover: "#ff6767",
 
-  primary_button_positive: "#775fd4",
-  primary_button_positive_hover: "#5a47a8d4",
+  primary_button_positive: "#3D66F9",
+  primary_button_positive_hover: "#7893f7",
   primary_button_negative: "#e92a2a",
   primary_button_negative_hover: "#c21a1a",
 
   secondary_button: "#a6a6cc",
 
   text_primary: "#FFFFFF",
+  text_secondary: "#000000",
 
   brand: "#57558d",
   brandSecondary: "#353453",
@@ -41,7 +42,7 @@ const colors = {
   pinkLight: "#fd9eb1",
   greenDark: "#35c29e",
   greenLight: "#95f2af",
-  error: "#FE392C",
+  error: "#ff675d",
   grayLight: "#F6F6F6",
   grayLight1: "#E9E9E9",
   grayLight2: "#D3D3D3",

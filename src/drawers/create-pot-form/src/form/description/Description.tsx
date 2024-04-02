@@ -3,7 +3,7 @@ import { useTheme } from "../../../../..";
 import { FormProps } from "../types";
 import { hexToRGB } from "../../../../../utils";
 
-export const Description = ({ register }: FormProps) => {
+export const Description = ({ register, errors }: FormProps) => {
   const { textStyles, colors } = useTheme();
 
   return (
@@ -13,7 +13,7 @@ export const Description = ({ register }: FormProps) => {
       </Text>
       <Textarea
         id="description"
-        {...register("description", { required: true })}
+        {...register("description", { required: "Required field" })}
         borderRadius={4}
         borderWidth={0}
         color={colors.text_primary}
@@ -26,6 +26,11 @@ export const Description = ({ register }: FormProps) => {
         _focus={{ bgColor: colors.brand_lightgrey, pl: "4" }}
         transition="all 0.1s ease-in-out"
       />
+      {errors?.description ? (
+        <Text {...textStyles.body3_700} color={colors.error} pt="1">
+          {errors.description.message}
+        </Text>
+      ) : null}
     </Flex>
   );
 };
