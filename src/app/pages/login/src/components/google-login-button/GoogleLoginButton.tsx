@@ -1,10 +1,10 @@
 import { Flex, Text } from "@chakra-ui/react";
 import * as React from "react";
-import axios from "axios";
 
 import { useGoogleLogin } from "@react-oauth/google";
 import { useTheme } from "../../../../../App";
 import { useAuthenticationContext } from "../../../../../../shared/utils/src";
+import { baseFetcher } from "../../../../../../libs/data-access/src/baseFetcher";
 
 export const GoogleLoginButton: React.FC = () => {
   const { textStyles, colors } = useTheme();
@@ -13,13 +13,7 @@ export const GoogleLoginButton: React.FC = () => {
   const login = useGoogleLogin({
     redirect_uri: `${window.location.origin}`,
     onSuccess: async (success) => {
-      await axios.post(
-        `${process.env.REACT_APP_SPLEND_SERVICE}/auth`,
-        {
-          code: success.code,
-        },
-        { withCredentials: true }
-      );
+      await baseFetcher("/auth").post({ code: success.code });
       logIn();
     },
     flow: "auth-code",

@@ -3,11 +3,11 @@ import * as React from "react";
 
 import { FormProvider, useForm } from "react-hook-form";
 import { DrawerContextProvider } from "../../../../../shared/utils/src";
-import axios from "axios";
 import { SplendNavigationPanel } from "../../../../../libs/feature-splend-navigation-panel";
 import { DashboardSummary } from "../../../../../libs/feature-dashboard-summary";
 import { DashboardFavourites } from "../../../../../libs/feature-dashboard-favourites-list";
 import { CreatePotDrawer } from "../../../../../libs/form-create-pot";
+import { baseFetcher } from "../../../../../libs/data-access/src/baseFetcher";
 
 export const DashboardScreen: React.FC = () => {
   const form = useForm();
@@ -17,21 +17,13 @@ export const DashboardScreen: React.FC = () => {
 
   React.useEffect(() => {
     async function getProfile() {
-      console.log("getting profile!");
-      await axios
-        .get(`${process.env.REACT_APP_SPLEND_SERVICE}/profile`, {
-          withCredentials: true,
-        })
-        .then((res) => setProfile(res.data));
+      const { data } = await baseFetcher("/profile").get();
+      setProfile(data);
     }
 
     async function getPots() {
-      console.log("getting pots");
-      await axios
-        .get(`${process.env.REACT_APP_SPLEND_SERVICE}/pots`, {
-          withCredentials: true,
-        })
-        .then((res) => setPots(res.data));
+      const { data } = await baseFetcher("/pots").get();
+      setPots(data);
     }
 
     getProfile().catch((err) => console.error(err));
