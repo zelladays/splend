@@ -11,6 +11,7 @@ export const GoogleLoginButton: React.FC = () => {
   const { logIn } = useAuthenticationContext();
 
   const login = useGoogleLogin({
+    redirect_uri: `${window.location.origin}`,
     onSuccess: async (success) => {
       await axios.post(
         `${process.env.REACT_APP_SPLEND_SERVICE}/auth`,
