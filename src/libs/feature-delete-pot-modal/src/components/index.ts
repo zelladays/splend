@@ -1,1 +1,1 @@
-export * from "./DeletePotModal";
+export * from "./delete-pot-modal";
