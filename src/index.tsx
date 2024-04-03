@@ -16,6 +16,9 @@ import {
 } from "./utils";
 import { BrowserRouter as Router } from "react-router-dom";
 import { NavigationRouter } from "./routes";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+
+const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
 export const useTheme = (): typeof themeValues => {
   return useChakraTheme();
@@ -24,16 +27,22 @@ export const useTheme = (): typeof themeValues => {
 const Splend = () => {
   const { isLoggedIn } = useAuthenticationContext();
 
+  if (!GOOGLE_CLIENT_ID) {
+    return <div>Missing ENV</div>;
+  }
+
   return (
-    <React.Suspense fallback={<div>Loading...</div>}>
-      <ChakraProvider theme={theme}>
-        <Router>
-          <Box width="100vw">
-            <NavigationRouter loggedIn={isLoggedIn} />
-          </Box>
-        </Router>
-      </ChakraProvider>
-    </React.Suspense>
+    <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
+      <React.Suspense fallback={<div>Loading...</div>}>
+        <ChakraProvider theme={theme}>
+          <Router>
+            <Box width="100vw">
+              <NavigationRouter loggedIn={isLoggedIn} />
+            </Box>
+          </Router>
+        </ChakraProvider>
+      </React.Suspense>
+    </GoogleOAuthProvider>
   );
 };
 
