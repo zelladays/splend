@@ -33,20 +33,5 @@ export const GoogleLoginButton: React.FC = () => {
     <SplButton buttonVariant="p_action_btn" icon={googleIcon} onClick={login}>
       Continue with Google
     </SplButton>
-    // <button onClick={login}>
-    //   <Flex
-    //     bgColor={colors.brand_accent}
-    //     px="4"
-    //     py="2"
-    //     borderRadius={8}
-    //     alignItems="center"
-    //     gap="2.5"
-    //   >
-    //     <SvgIcon icon="google" size={24} />
-    //     <Text {...textStyles.body3_700} color={colors.text_primary}>
-    //       Continue with Google
-    //     </Text>
-    //   </Flex>
-    // </button>
   );
 };
