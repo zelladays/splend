@@ -8,33 +8,41 @@ export const baseFetcher = (path: string, config?: AxiosRequestConfig) => {
       );
     }
 
-    const get = async (data?: any) =>
-      await axios.get(`${process.env.REACT_APP_SPLEND_SERVICE}${path}`, {
-        withCredentials: true,
-        headers: { "Access-Control-Allow-Origin": "*" },
-        ...config,
-      });
+    const get = () =>
+      axios
+        .get(`${process.env.REACT_APP_SPLEND_SERVICE}${path}`, {
+          withCredentials: true,
+          headers: { "Access-Control-Allow-Origin": "*" },
+          ...config,
+        })
+        .then((res) => res.data);
 
-    const post = async (data?: any) =>
-      await axios.post(`${process.env.REACT_APP_SPLEND_SERVICE}${path}`, data, {
-        withCredentials: true,
-        headers: { "Access-Control-Allow-Origin": "*" },
-        ...config,
-      });
+    const post = (data?: any) =>
+      axios
+        .post(`${process.env.REACT_APP_SPLEND_SERVICE}${path}`, data, {
+          withCredentials: true,
+          headers: { "Access-Control-Allow-Origin": "*" },
+          ...config,
+        })
+        .then((res) => res.data);
 
-    const put = async (data?: any) =>
-      await axios.put(`${process.env.REACT_APP_SPLEND_SERVICE}${path}`, data, {
-        withCredentials: true,
-        headers: { "Access-Control-Allow-Origin": "*" },
-        ...config,
-      });
+    const put = (data?: any) =>
+      axios
+        .put(`${process.env.REACT_APP_SPLEND_SERVICE}${path}`, data, {
+          withCredentials: true,
+          headers: { "Access-Control-Allow-Origin": "*" },
+          ...config,
+        })
+        .then((res) => res.data);
 
-    const del = async () =>
-      await axios.delete(`${process.env.REACT_APP_SPLEND_SERVICE}${path}`, {
-        withCredentials: true,
-        headers: { "Access-Control-Allow-Origin": "*" },
-        ...config,
-      });
+    const del = () =>
+      axios
+        .delete(`${process.env.REACT_APP_SPLEND_SERVICE}${path}`, {
+          withCredentials: true,
+          headers: { "Access-Control-Allow-Origin": "*" },
+          ...config,
+        })
+        .then((res) => res.data);
 
     return {
       get,

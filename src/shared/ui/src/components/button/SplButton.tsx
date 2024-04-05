@@ -107,7 +107,13 @@ export const SplButton = ({
   const { button, text } = useButtonVariants(buttonVariant);
 
   return (
-    <Button transition="all 0.1s ease" {...rest} {...button} gap="4">
+    <Button
+      transition="all 0.1s ease"
+      {...rest}
+      {...button}
+      gap="4"
+      _loading={{ color: text.color }}
+    >
       {icon ? <SvgIcon {...icon} /> : null}
       <Text {...text}>{children}</Text>
     </Button>
