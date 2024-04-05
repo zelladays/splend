@@ -5,6 +5,7 @@ const colors = {
   brand_dark_grey: "#1A191E",
   brand_grey: "#31313D",
   brand_lightgrey: "#3D3D4D",
+  brand_accent: "#3D66F9",
 
   pot_card: "#31313D",
   pot_card_hover: "#3f3f4e",
@@ -22,14 +23,16 @@ const colors = {
   icon_close_hover: "#ff6767",
 
   primary_button_positive: "#3D66F9",
-  primary_button_positive_hover: "#7893f7",
+  primary_button_positive_hover: "#4a6ff6",
+  secondary_button_positive: "transparent",
+  secondary_button_positive_hover: "rgba(25, 25, 30, 0.25)",
+
   primary_button_negative: "#e92a2a",
   primary_button_negative_hover: "#c21a1a",
 
-  secondary_button: "#a6a6cc",
-
-  text_primary: "#FFFFFF",
-  text_secondary: "#000000",
+  text_primary: "rgba(255, 255, 255, 0.87)",
+  text_secondary: "rgba(255, 255, 255, 0.6)",
+  text_tertiary: "rgba(255, 255, 255, 0.38)",
 
   brand: "#57558d",
   brandSecondary: "#353453",

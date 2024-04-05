@@ -1,13 +1,13 @@
-import { Flex, Text } from "@chakra-ui/react";
 import * as React from "react";
 
 import { useGoogleLogin } from "@react-oauth/google";
 import { useTheme } from "../../../../../App";
 import { useAuthenticationContext } from "../../../../../../shared/utils/src";
 import { baseFetcher } from "../../../../../../libs/data-access/src/baseFetcher";
+import { SplButton } from "../../../../../../shared/ui";
 
 export const GoogleLoginButton: React.FC = () => {
-  const { textStyles, colors } = useTheme();
+  const { colors } = useTheme();
   const { logIn } = useAuthenticationContext();
 
   const login = useGoogleLogin({
@@ -19,20 +19,34 @@ export const GoogleLoginButton: React.FC = () => {
     flow: "auth-code",
   });
 
+  const googleIcon = React.useMemo(
+    () =>
+      ({
+        icon: "google",
+        iconColor: colors.text_primary,
+        size: 24,
+      } as const),
+    [colors.text_primary]
+  );
+
   return (
-    <button onClick={login}>
-      <Flex
-        bgColor={colors.white}
-        px="4"
-        py="2"
-        borderRadius={8}
-        alignItems="center"
-        gap="2.5"
-      >
-        <Text {...textStyles.body2_700} color={colors.darkBrand}>
-          Access your Splend!
-        </Text>
-      </Flex>
-    </button>
+    <SplButton buttonVariant="p_action_btn" icon={googleIcon} onClick={login}>
+      Continue with Google
+    </SplButton>
+    // <button onClick={login}>
+    //   <Flex
+    //     bgColor={colors.brand_accent}
+    //     px="4"
+    //     py="2"
+    //     borderRadius={8}
+    //     alignItems="center"
+    //     gap="2.5"
+    //   >
+    //     <SvgIcon icon="google" size={24} />
+    //     <Text {...textStyles.body3_700} color={colors.text_primary}>
+    //       Continue with Google
+    //     </Text>
+    //   </Flex>
+    // </button>
   );
 };
