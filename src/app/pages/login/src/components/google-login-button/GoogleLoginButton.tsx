@@ -18,10 +18,17 @@ export const GoogleLoginButton: React.FC = () => {
     redirect_uri: `${window.location.origin}`,
     onSuccess: async (success) => {
       setIsLoading(true);
-      await baseFetcher("/auth").post({ code: success.code });
+      const { authState } = await baseFetcher("/auth").post({
+        code: success.code,
+      });
       await delay(1000);
       setIsLoading(false);
-      logIn();
+
+      if (authState === "ONBOARDED") {
+        logIn();
+      } else {
+        console.log("Navigate to onboarding");
+      }
     },
     flow: "auth-code",
   });

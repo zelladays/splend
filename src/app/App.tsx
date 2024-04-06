@@ -17,6 +17,7 @@ import {
 import { BrowserRouter as Router } from "react-router-dom";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { NavigationRouter } from "./routes";
+import { baseFetcher, useSplendApi } from "../libs/data-access";
 
 const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
@@ -25,7 +26,17 @@ export const useTheme = (): typeof themeValues => {
 };
 
 const Splend = () => {
-  const { isLoggedIn } = useAuthenticationContext();
+  const { isLoggedIn, logIn } = useAuthenticationContext();
+
+  React.useEffect(() => {
+    baseFetcher("/auth")
+      .get()
+      .then((data) => {
+        if (data.authState === "LOGGED_IN") {
+          logIn();
+        }
+      });
+  }, []);
 
   if (!GOOGLE_CLIENT_ID) {
     return <div>Missing ENV</div>;

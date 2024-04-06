@@ -30,8 +30,6 @@ export const DashboardScreen: React.FC = () => {
     getPots().catch((err) => console.error(err));
   }, []);
 
-  console.log({ profile });
-
   return (
     <FormProvider {...form}>
       <DrawerContextProvider>
