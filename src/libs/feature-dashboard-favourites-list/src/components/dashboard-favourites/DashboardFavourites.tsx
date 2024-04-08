@@ -3,6 +3,8 @@ import * as React from "react";
 import { useTheme } from "../../../../../app/App";
 import { PotItem } from "../../../../data-access-types";
 import { PotCard } from "../../../../../shared/ui";
+import useSWR from "swr";
+import { baseFetcher } from "../../../../data-access";
 
 const NoPotPlaceholder = React.memo(() => {
   const { textStyles, colors } = useTheme();
@@ -20,6 +22,7 @@ const NoPotPlaceholder = React.memo(() => {
 });
 
 export const DashboardFavourites = React.memo(() => {
+  const { data } = useSWR("/pots", (url) => baseFetcher(url).get());
   const { textStyles, colors } = useTheme();
   const pots = localStorage.getItem("pots");
   const toast = useToast();
@@ -31,8 +34,7 @@ export const DashboardFavourites = React.memo(() => {
 
   const handleDelete = React.useCallback(
     (id: string) => {
-      const newPots = potItems.filter((pot) => pot.id !== id);
-      localStorage.setItem("pots", JSON.stringify(newPots));
+      // @TODO
       toast({
         position: "top",
         title: "Pot deleted",
@@ -50,15 +52,19 @@ export const DashboardFavourites = React.memo(() => {
         Favourites
       </Text>
       <Flex flexWrap="wrap" width="100%" gap="6">
-        {potItems.length === 0 ? (
+        {data?.length === 0 ? (
           <NoPotPlaceholder />
         ) : (
-          potItems.map((pot) => (
+          // @ts-ignore
+          data?.map((pot) => (
             <PotCard
               potId={pot.id}
               key={pot.id}
               potName={pot.title}
-              potAmount={{ goal: pot.amount, progress: 0 }}
+              potAmount={{
+                goal: pot.savingGoal,
+                progress: pot.currentAmountSaved,
+              }}
               onDeleteClick={handleDelete}
             />
           ))
